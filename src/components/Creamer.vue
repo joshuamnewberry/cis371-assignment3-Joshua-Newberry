@@ -1,10 +1,12 @@
 <template>
-  <div class="froth">
+  <div class="froth" :style="{ '--creamer-color': color }">
     <div v-for=" in 5" class="foam"></div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{ color: string }>();
+</script>
 <style lang="scss" scoped>
 .froth {
   overflow: visible;
@@ -12,12 +14,14 @@
   position: relative;
   height: 20%;
   width: 100%;
-  background-color: #c6c6c6;
+  background-color: var(--creamer-color);
   animation: pour-tea 2s 2s forwards;
 }
 .foam {
   display: block;
-  background: #e4e0d2;
+  // bubbles share the creamer color - the inset shadow gives them a frothy edge
+  background: var(--creamer-color);
+  box-shadow: inset -3px -3px 6px rgba(0, 0, 0, 0.15);
   border-radius: 30px;
   height: 40px;
   width: 40px;

@@ -1,8 +1,10 @@
 <template>
-  <div class="baseBeverage"></div>
+  <div class="baseBeverage" :style="{ backgroundColor: color }"></div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{ color: string }>();
+</script>
 
 <style scoped>
 .baseBeverage {
@@ -12,6 +14,11 @@
   bottom: 0;
   animation: pour-tea 2s;
   z-index: 300;
-  /* // border-radius: 0.05em 0.05em 2.2em 2.2em; */
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.15),
+    rgba(0, 0, 0, 0.25)
+  );
+  transition: background-color 0.5s;
 }
 </style>
